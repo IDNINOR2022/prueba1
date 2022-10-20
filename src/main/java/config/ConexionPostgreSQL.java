@@ -21,25 +21,37 @@ Versión: 9.4.1208
 
 */
 public class ConexionPostgreSQL {
+    private static ConexionPostgreSQL cConexion;
+    
     private Connection conectar;
     private String BD;
     private String usuario;
     private String contrasenia;
 
 
-    public ConexionPostgreSQL(Connection conectar, String BD, String usuario, String contrasenia) {
+    private ConexionPostgreSQL(Connection conectar, String BD, String usuario, String contrasenia) {
         this.conectar = conectar;
         this.BD = BD;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
 
-     public ConexionPostgreSQL() {
+    private ConexionPostgreSQL() {
         this.conectar = null;
         this.BD = "";
         this.usuario = "";
         this.contrasenia = "";
     }
+    
+    public synchronized static ConexionPostgreSQL getConexion(){
+        if(cConexion==null){
+            cConexion = new ConexionPostgreSQL();
+        }
+        
+        return cConexion;
+    };
+     
+    
     
     public void conectar(){
         try{
@@ -53,7 +65,7 @@ public class ConexionPostgreSQL {
         }
     }
     
-    public Connection getConexion(){
+    public Connection getConexions(){
         return conectar;
     }
 }

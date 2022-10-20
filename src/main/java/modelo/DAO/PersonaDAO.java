@@ -18,7 +18,7 @@ import modelo.DTO.PersonaDTO;
  */
 public class PersonaDAO {
    private static final String SQL_READALL ="SELECT * FROM tb_persona";
-   private static final ConexionPostgreSQL con = new ConexionPostgreSQL();
+   private static final ConexionPostgreSQL con = ConexionPostgreSQL.getConexion();
 
     public PersonaDAO() {
         con.conectar();
@@ -30,7 +30,7 @@ public class PersonaDAO {
         PreparedStatement ps;
        
         try{
-             ps = con.getConexion().prepareStatement(SQL_READALL);
+             ps = con.getConexions().prepareStatement(SQL_READALL);
              ResultSet rs = ps.executeQuery();
              lista = new ArrayList<>();
              while(rs.next()){
