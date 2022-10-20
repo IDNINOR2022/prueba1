@@ -20,21 +20,21 @@ Artifact ID: postgresql
 Versión: 9.4.1208
 
 */
-public class Conexion {
+public class ConexionPostgreSQL {
     private Connection conectar;
     private String BD;
     private String usuario;
     private String contrasenia;
 
 
-    public Conexion(Connection conectar, String BD, String usuario, String contrasenia) {
+    public ConexionPostgreSQL(Connection conectar, String BD, String usuario, String contrasenia) {
         this.conectar = conectar;
         this.BD = BD;
         this.usuario = usuario;
         this.contrasenia = contrasenia;
     }
 
-     public Conexion() {
+     public ConexionPostgreSQL() {
         this.conectar = null;
         this.BD = "";
         this.usuario = "";

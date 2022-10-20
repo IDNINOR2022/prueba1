@@ -4,7 +4,7 @@
  */
 package modelo.DAO;
 
-import config.Conexion;
+import config.ConexionPostgreSQL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,7 +18,7 @@ import modelo.DTO.PersonaDTO;
  */
 public class PersonaDAO {
    private static final String SQL_READALL ="SELECT * FROM tb_persona";
-   private static final Conexion con = new Conexion();
+   private static final ConexionPostgreSQL con = new ConexionPostgreSQL();
 
     public PersonaDAO() {
         con.conectar();
